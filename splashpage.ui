@@ -81,7 +81,7 @@ QMenu::item {
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="login">
+        <widget class="QPushButton" name="login_btn">
          <property name="styleSheet">
           <string notr="true">background-color:grey;</string>
          </property>
@@ -91,7 +91,7 @@ QMenu::item {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="signup">
+        <widget class="QPushButton" name="signup_btn">
          <property name="styleSheet">
           <string notr="true">background-color:grey;</string>
          </property>
@@ -147,10 +147,8 @@ QMenu::item {
       <property name="styleSheet">
        <string notr="true">background-image: url(:/resources/iconImage.png);
 background-repeat: no-repeat;
-background-size: cover;
 border: none;
-background-position: center;
-display: block;</string>
+background-position: center;</string>
       </property>
      </widget>
     </item>

@@ -1,0 +1,11 @@
+#ifndef WINDOW_IDENTIFIERS_H
+#define WINDOW_IDENTIFIERS_H
+
+typedef enum {
+    SPLASH,
+    LOGIN,
+    SIGNUP,
+    MAIN_APPLICATION
+} PAGE_ID;
+
+#endif // WINDOW_IDENTIFIERS_H

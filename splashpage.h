@@ -2,6 +2,7 @@
 #define SPLASHPAGE_H
 
 #include <QMainWindow>
+#include "window_identifiers.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SplashPage; }
@@ -16,8 +17,9 @@ public:
     ~SplashPage();
 
 private slots:
-    void on_signup_clicked();
-    void on_login_clicked();
+    void signup_clicked();
+    void login_clicked();
+    void change_to_page(PAGE_ID window);
 
 private:
     Ui::SplashPage *ui;

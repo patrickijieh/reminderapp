@@ -20,6 +20,7 @@ set(PROJECT_SOURCES
         splashpage.cpp
         splashpage.h
         splashpage.ui
+        window_identifiers.h
         README.md
         ${TS_FILES}
 )
@@ -31,7 +32,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         resources/largeicon.jpg
         qt-app-resources.qrc
         resources/iconImage.png
-
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET reminder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
