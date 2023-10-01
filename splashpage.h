@@ -15,6 +15,10 @@ public:
     SplashPage(QWidget *parent = nullptr);
     ~SplashPage();
 
+private slots:
+    void on_signup_clicked();
+    void on_login_clicked();
+
 private:
     Ui::SplashPage *ui;
 };

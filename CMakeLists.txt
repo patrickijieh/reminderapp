@@ -14,11 +14,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
 set(TS_FILES reminder_en_US.ts)
 
+
 set(PROJECT_SOURCES
         main.cpp
         splashpage.cpp
         splashpage.h
         splashpage.ui
+        README.md
         ${TS_FILES}
 )
 
@@ -26,6 +28,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(reminder
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        resources/largeicon.jpg
+        qt-app-resources.qrc
+        resources/iconImage.png
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET reminder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
