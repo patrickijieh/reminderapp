@@ -1,6 +1,6 @@
 #include "splashpage.h"
 #include "./ui_splashpage.h"
-#include <Windows.h>
+#include "util.h"
 
 SplashPage::SplashPage(QWidget *parent)
     : QMainWindow(parent)
@@ -14,6 +14,8 @@ SplashPage::SplashPage(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle(windowTitle);
     this->setWindowIcon(appIcon);
+
+    this->hide_login_form(true);
 
     connect(
         ui->login_btn, &QPushButton::clicked,
@@ -50,13 +52,14 @@ void SplashPage::change_to_page(PAGE_ID window)
         break;
 
     case LOGIN:
-        Sleep(500);
+        util::sleep(500);
         ui->login_btn->hide();
         ui->signup_btn->hide();
+        this->hide_login_form(false);
         break;
 
     case SIGNUP:
-        Sleep(500);
+        util::sleep(500);
         ui->login_btn->hide();
         ui->signup_btn->hide();
         break;
@@ -65,7 +68,22 @@ void SplashPage::change_to_page(PAGE_ID window)
         break;
 
     }
+}
 
+void SplashPage::hide_login_form(bool hide)
+{
+    if (hide)
+    {
+        ui->login_username->hide();
+        ui->login_password->hide();
+        ui->login_confirm_btn->hide();
+    }
 
+    else
+    {
+        ui->login_username->show();
+        ui->login_password->show();
+        ui->login_confirm_btn->show();
+    }
 }
 
