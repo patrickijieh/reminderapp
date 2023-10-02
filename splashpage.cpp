@@ -1,3 +1,4 @@
+#include <iostream>
 #include "splashpage.h"
 #include "./ui_splashpage.h"
 #include "util.h"
@@ -24,6 +25,10 @@ SplashPage::SplashPage(QWidget *parent)
     connect(
         ui->signup_btn, &QPushButton::clicked,
         this, &SplashPage::signup_clicked);
+
+    connect(
+        ui->login_confirm_btn, &QPushButton::clicked,
+        this, &SplashPage::login_confirm_clicked);
 }
 
 SplashPage::~SplashPage()
@@ -45,9 +50,22 @@ void SplashPage::signup_clicked()
     this->change_to_page(SIGNUP);
 }
 
+void SplashPage::login_confirm_clicked()
+{
+    printf("get login info\n");
+    std::string username = ui->login_username->text().toStdString();
+    std::string password = ui->login_password->text().toStdString();
+
+    if (username == "Patrick" && password == "Ijieh")
+    {
+        this->hide_login_form(true);
+    }
+}
+
 void SplashPage::change_to_page(PAGE_ID window)
 {
-    switch(window) {
+    switch (window)
+    {
     case SPLASH:
         break;
 
@@ -66,7 +84,6 @@ void SplashPage::change_to_page(PAGE_ID window)
 
     case MAIN_APPLICATION:
         break;
-
     }
 }
 

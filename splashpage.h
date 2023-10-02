@@ -19,6 +19,7 @@ public:
 private slots:
     void signup_clicked();
     void login_clicked();
+    void login_confirm_clicked();
     void change_to_page(PAGE_ID window);
     void hide_login_form(bool hide);
 
