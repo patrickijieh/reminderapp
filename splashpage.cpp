@@ -18,6 +18,7 @@ SplashPage::SplashPage(QWidget *parent)
 
     this->hide_login_form(true);
     this->hide_signup_form(true);
+    ui->back_btn->hide();
 
     connect(
         ui->login_btn, &QPushButton::clicked,
@@ -34,6 +35,10 @@ SplashPage::SplashPage(QWidget *parent)
     connect(
         ui->signup_confrim_btn, &QPushButton::clicked,
         this, &SplashPage::signup_confirm_clicked);
+
+    connect(
+        ui->back_btn, &QPushButton::clicked,
+        this, &SplashPage::back_clicked);
 }
 
 SplashPage::~SplashPage()
@@ -45,12 +50,23 @@ void SplashPage::login_clicked()
 {
     printf("display login\n");
     ui->login_btn->setDisabled(true);
+    ui->signup_btn->setDisabled(true);
     this->change_to_page(LOGIN);
 }
+
+void SplashPage::back_clicked()
+{
+    printf("back to splash\n");
+    ui->login_btn->setDisabled(false);
+    ui->signup_btn->setDisabled(false);
+    this->change_to_page(SPLASH);
+}
+
 
 void SplashPage::signup_clicked()
 {
     printf("display signup\n");
+    ui->login_btn->setDisabled(true);
     ui->signup_btn->setDisabled(true);
     this->change_to_page(SIGNUP);
 }
@@ -80,6 +96,12 @@ void SplashPage::change_to_page(PAGE_ID window)
     switch (window)
     {
     case SPLASH:
+        util::sleep(500);
+        this->hide_login_form(true);
+        this->hide_signup_form(true);
+        ui->back_btn->hide();
+        ui->login_btn->show();
+        ui->signup_btn->show();
         break;
 
     case LOGIN:
@@ -88,6 +110,8 @@ void SplashPage::change_to_page(PAGE_ID window)
         ui->signup_btn->hide();
         this->hide_login_form(false);
         this->hide_signup_form(true);
+
+        ui->back_btn->show();
         break;
 
     case SIGNUP:
@@ -96,6 +120,8 @@ void SplashPage::change_to_page(PAGE_ID window)
         ui->signup_btn->hide();
         this->hide_login_form(true);
         this->hide_signup_form(false);
+
+        ui->back_btn->show();
         break;
 
     case MAIN_APPLICATION:
