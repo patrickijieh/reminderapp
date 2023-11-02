@@ -14,6 +14,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
 set(TS_FILES reminder_en_US.ts)
 
+#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cryptopp-cmake)
+
+#set(CRYPTOPP_SOURCES
+    #${CMAKE_CURRENT_SOURCE_DIR}/cryptopp-cmake/cryptopp890
+#)
 
 set(PROJECT_SOURCES
         main.cpp

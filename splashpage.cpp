@@ -1,7 +1,10 @@
 #include <iostream>
+#include <QtNetwork/QNetworkAccessManager>
+
 #include "splashpage.h"
 #include "./ui_splashpage.h"
 #include "util.h"
+
 
 SplashPage::SplashPage(QWidget *parent)
     : QMainWindow(parent)
@@ -39,6 +42,7 @@ SplashPage::SplashPage(QWidget *parent)
     connect(
         ui->back_btn, &QPushButton::clicked,
         this, &SplashPage::back_clicked);
+
 }
 
 SplashPage::~SplashPage()
@@ -81,6 +85,10 @@ void SplashPage::login_confirm_clicked()
     {
         this->hide_login_form(true);
     }
+
+    password = util::hash_string(password);
+
+    printf("hash: %s\n", password.c_str());
 }
 
 void SplashPage::signup_confirm_clicked()
@@ -89,6 +97,16 @@ void SplashPage::signup_confirm_clicked()
     std::string username = ui->signup_username->text().toStdString();
     std::string password = ui->signup_password->text().toStdString();
     std::string confirmed_password = ui->signup_password_2->text().toStdString();
+
+    if (password.compare(confirmed_password) != 0)
+    {
+        printf("differing passwords\n");
+        return;
+    }
+
+    password = util::hash_string(password);
+
+    printf("hash: %s\n", password.c_str());
 }
 
 void SplashPage::change_to_page(PAGE_ID window)
