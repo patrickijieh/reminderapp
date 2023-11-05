@@ -91,7 +91,7 @@ void SplashPage::login_confirm_clicked()
     printf("hash: %s\n", password.c_str());
 
     network_manager *nm = new network_manager();
-    nm->get("http://157.230.84.116:3000");
+    nm->get("http://cop4331wastaken.com/");
 }
 
 void SplashPage::signup_confirm_clicked()
