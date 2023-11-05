@@ -22,12 +22,14 @@ set(TS_FILES reminder_en_US.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        splashpage.cpp
         splashpage.h
+        splashpage.cpp
         splashpage.ui
         window_identifiers.h
         util.h
         util.cpp
+        network_manager.h
+        network_manager.cpp
         README.md
         ${TS_FILES}
 )
@@ -39,9 +41,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         resources/largeicon.jpg
         qt-app-resources.qrc
         resources/iconImage.png
-
-
     )
+
+    find_package(Qt6 REQUIRED COMPONENTS Network)
+    target_link_libraries(reminder PRIVATE Qt6::Network)
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET reminder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)

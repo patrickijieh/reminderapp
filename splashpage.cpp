@@ -1,8 +1,8 @@
 #include <iostream>
-#include <QtNetwork/QNetworkAccessManager>
 
 #include "splashpage.h"
 #include "./ui_splashpage.h"
+#include "network_manager.h"
 #include "util.h"
 
 
@@ -89,6 +89,9 @@ void SplashPage::login_confirm_clicked()
     password = util::hash_string(password);
 
     printf("hash: %s\n", password.c_str());
+
+    network_manager *nm = new network_manager();
+    nm->get("http://157.230.84.116:3000");
 }
 
 void SplashPage::signup_confirm_clicked()

@@ -5,7 +5,8 @@
 #include <thread>
 #include <iostream>
 
-class util {
+class util
+{
 
 public:
     static void sleep(int ms);
