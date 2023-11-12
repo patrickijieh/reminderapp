@@ -25,7 +25,6 @@ set(PROJECT_SOURCES
         splashpage.h
         splashpage.cpp
         splashpage.ui
-        window_identifiers.h
         util.h
         util.cpp
         network_manager.h

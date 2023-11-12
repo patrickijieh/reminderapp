@@ -2,7 +2,7 @@
 #define SPLASHPAGE_H
 
 #include <QMainWindow>
-#include "window_identifiers.h"
+#include "util.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SplashPage; }

@@ -3,7 +3,6 @@
 #include "splashpage.h"
 #include "./ui_splashpage.h"
 #include "network_manager.h"
-#include "util.h"
 
 
 SplashPage::SplashPage(QWidget *parent)
@@ -78,10 +77,10 @@ void SplashPage::signup_clicked()
 void SplashPage::login_confirm_clicked()
 {
     printf("get login info\n");
-    std::string username = ui->login_username->text().toStdString();
+    std::string email = ui->login_email->text().toStdString();
     std::string password = ui->login_password->text().toStdString();
 
-    if (username == "Patrick" && password == "Ijieh")
+    if (email == "Patrick" && password == "Ijieh")
     {
         this->hide_login_form(true);
     }
@@ -91,7 +90,9 @@ void SplashPage::login_confirm_clicked()
     printf("hash: %s\n", password.c_str());
 
     network_manager *nm = new network_manager();
-    nm->get("http://cop4331wastaken.com/");
+    nm->get_user(email, password);
+
+    //delete nm;
 }
 
 void SplashPage::signup_confirm_clicked()
@@ -154,14 +155,14 @@ void SplashPage::hide_login_form(bool hide)
 {
     if (hide)
     {
-        ui->login_username->hide();
+        ui->login_email->hide();
         ui->login_password->hide();
         ui->login_confirm_btn->hide();
     }
 
     else
     {
-        ui->login_username->show();
+        ui->login_email->show();
         ui->login_password->show();
         ui->login_confirm_btn->show();
     }
@@ -171,6 +172,7 @@ void SplashPage::hide_signup_form(bool hide)
 {
     if (hide)
     {
+        ui->signup_email->hide();
         ui->signup_username->hide();
         ui->signup_password->hide();
         ui->signup_password_2->hide();
@@ -179,6 +181,7 @@ void SplashPage::hide_signup_form(bool hide)
 
     else
     {
+        ui->signup_email->show();
         ui->signup_username->show();
         ui->signup_password->show();
         ui->signup_password_2->show();

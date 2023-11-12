@@ -23,8 +23,56 @@ QMenu::item {
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <spacer name="horizontalSpacer">
+    <item row="1" column="2">
+     <widget class="QLabel" name="title">
+      <property name="minimumSize">
+       <size>
+        <width>231</width>
+        <height>51</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>51</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:700;&quot;&gt;QuickRemind&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="2">
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="12" column="2">
+     <spacer name="verticalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="3">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -48,6 +96,58 @@ QMenu::item {
        </size>
       </property>
      </spacer>
+    </item>
+    <item row="0" column="2">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="11" column="2">
+     <widget class="QPushButton" name="back_btn">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: grey;</string>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGraphicsView" name="iconImage">
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/resources/iconImage.png);
+background-repeat: no-repeat;
+border: none;
+background-position: center;</string>
+      </property>
+     </widget>
     </item>
     <item row="6" column="2">
      <widget class="QWidget" name="widget" native="true">
@@ -104,10 +204,10 @@ QMenu::item {
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="login_username">
+        <widget class="QLineEdit" name="login_email">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>200</width>
            <height>40</height>
           </size>
          </property>
@@ -115,7 +215,7 @@ QMenu::item {
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Username</string>
+          <string>Email</string>
          </property>
         </widget>
        </item>
@@ -123,7 +223,7 @@ QMenu::item {
         <widget class="QLineEdit" name="login_password">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>200</width>
            <height>40</height>
           </size>
          </property>
@@ -152,10 +252,26 @@ QMenu::item {
         </widget>
        </item>
        <item>
+        <widget class="QLineEdit" name="signup_email">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Email</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLineEdit" name="signup_username">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>200</width>
            <height>40</height>
           </size>
          </property>
@@ -171,7 +287,7 @@ QMenu::item {
         <widget class="QLineEdit" name="signup_password">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>200</width>
            <height>40</height>
           </size>
          </property>
@@ -190,7 +306,7 @@ QMenu::item {
         <widget class="QLineEdit" name="signup_password_2">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>200</width>
            <height>40</height>
           </size>
          </property>
@@ -235,106 +351,6 @@ QMenu::item {
         </spacer>
        </item>
       </layout>
-     </widget>
-    </item>
-    <item row="12" column="2">
-     <spacer name="verticalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="title">
-      <property name="minimumSize">
-       <size>
-        <width>231</width>
-        <height>51</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>51</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:700;&quot;&gt;QuickRemind&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="2">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="1">
-     <widget class="QGraphicsView" name="iconImage">
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/resources/iconImage.png);
-background-repeat: no-repeat;
-border: none;
-background-position: center;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="14" column="2">
-     <spacer name="verticalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="11" column="2">
-     <widget class="QPushButton" name="back_btn">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: grey;</string>
-      </property>
-      <property name="text">
-       <string>Back</string>
-      </property>
      </widget>
     </item>
    </layout>

@@ -14,7 +14,7 @@ bool network_manager::get(const char* URL)
 {
     QNetworkReply *res = qnam->get(QNetworkRequest(QUrl(URL)));
 
-    connect(res, &QIODevice::readyRead,
+    connect(qnam, &QNetworkAccessManager::finished,
             this, &network_manager::reply_finished);
 
     connect(res, &QNetworkReply::errorOccurred,
@@ -26,9 +26,23 @@ bool network_manager::get(const char* URL)
     return true;
 }
 
-void network_manager::reply_finished()
+
+void network_manager::get_user(std::string email, std::string pass)
 {
-    printf("callback function\n");
+    std::string url = "http://cop4331wastaken.com/users/";
+    url.append(email);
+    url.append("/");
+    url.append(pass);
+    printf("%s\n", url.c_str());
+    this->get(url.c_str());
+}
+
+void network_manager::reply_finished(QNetworkReply *reply)
+{
+    QByteArray res = reply->readAll();
+    network_response = res.toStdString();
+    printf("%s\n", res.toStdString().c_str());
+    reply->deleteLater();
 }
 
 void network_manager::network_error()

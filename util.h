@@ -5,6 +5,13 @@
 #include <thread>
 #include <iostream>
 
+typedef enum {
+    SPLASH,
+    LOGIN,
+    SIGNUP,
+    MAIN_APPLICATION
+} PAGE_ID;
+
 class util
 {
 
