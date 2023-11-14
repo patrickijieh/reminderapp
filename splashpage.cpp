@@ -98,6 +98,7 @@ void SplashPage::login_confirm_clicked()
 void SplashPage::signup_confirm_clicked()
 {
     printf("get signup info\n");
+    std::string email = ui->signup_email->text().toStdString();
     std::string username = ui->signup_username->text().toStdString();
     std::string password = ui->signup_password->text().toStdString();
     std::string confirmed_password = ui->signup_password_2->text().toStdString();
@@ -108,9 +109,14 @@ void SplashPage::signup_confirm_clicked()
         return;
     }
 
+    this->hide_signup_form(true);
+
     password = util::hash_string(password);
 
     printf("hash: %s\n", password.c_str());
+
+    network_manager *nm = new network_manager();
+    nm->create_user(email, username, password);
 }
 
 void SplashPage::change_to_page(PAGE_ID window)

@@ -10,7 +10,7 @@ network_manager::~network_manager()
     delete qnam;
 }
 
-bool network_manager::get(const char* URL)
+void network_manager::get(const char* URL)
 {
     QNetworkReply *res = qnam->get(QNetworkRequest(QUrl(URL)));
 
@@ -22,10 +22,35 @@ bool network_manager::get(const char* URL)
 
     connect(res, &QNetworkReply::sslErrors,
             this, &network_manager::ssl_error);
-
-    return true;
 }
 
+void network_manager::post(const char* URL, std::string query_str)
+{
+    QNetworkRequest req = QNetworkRequest(QUrl(URL));
+    req.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/x-www-form-urlencoded"));
+    QNetworkReply *res = qnam->post(req, QByteArray(query_str.c_str()));
+
+    connect(qnam, &QNetworkAccessManager::finished,
+            this, &network_manager::reply_finished);
+
+    connect(res, &QNetworkReply::errorOccurred,
+            this, &network_manager::network_error);
+
+    connect(res, &QNetworkReply::sslErrors,
+            this, &network_manager::ssl_error);
+}
+
+void network_manager::create_user(std::string email, std::string username, std::string pass)
+{
+    std::string url = "http://cop4331wastaken.com/users/";
+
+    std::string query = "";
+    query.append("email=" + email + "&");
+    query.append("username=" + username + "&");
+    query.append("password=" + pass);
+
+    this->post(url.c_str(), query);
+}
 
 void network_manager::get_user(std::string email, std::string pass)
 {
